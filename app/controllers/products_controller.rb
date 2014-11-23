@@ -11,13 +11,13 @@ class ProductsController < ApplicationController
   	@product = Product.create(product_params)
   end
 
-  def import
-  end
-  
+
 
 private 
 def product_params
 	params.require(:product).permit(:code, :productgroupcode, :name, :manufacturer, :manufacturercode, :qttyinstock, :tax, :price, :pricenotax, :retailprice, :short_description, :warranty, :eur_exchange_rate, :barcode, :image_url, :special_offer)
 
 end
+
+
 end

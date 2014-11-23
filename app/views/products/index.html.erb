@@ -4,6 +4,6 @@
 <ul>
 <% @products.each do |product| %>
 	<li><%= product.code %></li>
-	<li><%= image_tag(product.image_url) %></li>
+	<li><%= image_tag(product.image_url, height:"100", width:"100") %></li>
 	<% end %>
 </ul>

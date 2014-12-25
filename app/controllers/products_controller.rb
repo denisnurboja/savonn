@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   def index
-  	@products = Product.where(id: 1099..1114)
+  	@products = Product.all.where("image_url IS NOT NULL")
+    respond_to do |format|
+      format.html
+      format.xml {render xml:@users}
+      format.csv {send_data @products.to_csv2}
+    end
   end
   
   def new
@@ -9,6 +14,7 @@ class ProductsController < ApplicationController
   
   def create
   	@product = Product.create(product_params)
+    format.xml {render :show, status: :created, location: @product}
   end
 
 

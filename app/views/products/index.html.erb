@@ -1,9 +1,16 @@
 <h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<%= link_to 'Download CSV', products_path(format: "csv") %>
 
-<ul>
-<% @products.each do |product| %>
-	<li><%= product.code %></li>
-	<li><%= image_tag(product.image_url, height:"100", width:"100") %></li>
-	<% end %>
-</ul>
+<table class="table">
+<% @products.order("special_offer DESC").each do |product| %>
+  <tr>
+		<td><%= product.code %><br /><%= product.name %></td>
+		<td><%= product.short_description %></td>
+		<td>
+			<%= product.retailprice.to_i %><br />
+			<span class="akcija"><%= product.special_offer %></span>
+		</td>
+		<td><%= image_tag(product.image_url, height:"100", width:"100") %></td>
+  </tr>
+<% end %>
+</table>

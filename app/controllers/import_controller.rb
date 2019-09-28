@@ -16,7 +16,7 @@ class ImportController < ApplicationController
 private
   def get_ct_data
   client = Savon.client(wsdl: "http://www.ct4partners.ba/webservices/ctproductsinstock.asmx?WSDL")
-  message = {username: 'drtechno', password:'drtechno123'}
+  message = {username: 'drtechno', password:'?????????'}
   response = client.call(:get_ct_products, message: message)
   data = response.body[:get_ct_products_response][:get_ct_products_result][:ctproduct]
 
